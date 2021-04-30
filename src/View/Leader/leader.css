@@ -1,0 +1,25 @@
+.leader{
+    display: flex;
+    flex-direction: column;
+}
+.leader >div:first-child{
+    font-size: 4rem;
+}
+.leader >div:last-child{
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.leader >div:last-child > div{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+.leader >div:last-child > div >div:last-child{
+    color: orange;
+}

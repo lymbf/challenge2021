@@ -1,0 +1,17 @@
+.header{
+    color:orange;
+    font-size: 4.5rem;
+    line-height: 5.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    width: 400px;
+    margin-bottom: 5rem;
+}
+
+@media only screen and (max-width: 600px){
+    .header{
+        font-size: 3.5rem;
+        width: 350px;
+    }
+}
