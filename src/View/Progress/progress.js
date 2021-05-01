@@ -1,6 +1,8 @@
 import React from "react";
 import "./progress.css";
 
+import Chartbox from "../Chart/chartbox";
+
 export default function Progress({ user_stats }) {
   return (
     <div className="progress">
@@ -8,18 +10,23 @@ export default function Progress({ user_stats }) {
         return (
           <div className="progress-user">
             <div>
-                <div>{user.name}</div>
-                <div>
-                    <div>Progress: </div><div>{user.progress} %</div>
-                </div>
-                <div>
-                    <div>Riding: </div><div>{user.riding} Km</div>
-                </div>
-                <div>
-                    <div>Jogging: </div><div>{user.jogging} Km</div>
-                </div>
+              <div>{user.name}</div>
+              <div>
+                <div>Progress: </div>
+                <div>{user.progress} %</div>
+              </div>
+              <div>
+                <div>Riding: </div>
+                <div>{user.riding} Km</div>
+              </div>
+              <div>
+                <div>Jogging: </div>
+                <div>{user.jogging} Km</div>
+              </div>
             </div>
-            <div></div>
+            <div>
+              <Chartbox activities={user.activities} />
+            </div>
           </div>
         );
       })}

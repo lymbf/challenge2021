@@ -1,3 +1,5 @@
+import consts from "../Model/Consts";
+
 export default function useResultsController() {
   const calculateRiding = (instances) => {
     var running_sum = 0;
@@ -39,14 +41,62 @@ export default function useResultsController() {
     return progress;
   };
 
-  const showLeader = (data)=>{
-        let leader = {progress: 0};
-        data.forEach(user=>{
-            if(user.progress> leader.progress){
-                leader = user
+  const showLeader = (data) => {
+    let leader = { progress: 0 };
+    data.forEach((user) => {
+      if (user.progress > leader.progress) {
+        leader = user;
+      }
+    });
+    return leader;
+  };
+
+  const challengeActivities = (activities) => {
+
+    let result = activities.map((user) => {
+      let res = user.activities.map((activitie) => {
+        let date = new Date(activitie.start_date);
+        if (date > consts.START_DATE) {
+          return activitie;
+        }
+      });
+      res = res.filter(Boolean);
+      return({name: user.name, activities: res})
+    });
+    return result
+  };
+
+  const ridingActivities = (activities)=>{
+        let res = activities.map(activitie=>{
+          if(activitie.workout_type === 10){
+            return{
+              distance: activitie.distance,
+              date: new Date(activitie.start_date)
             }
+          }
         })
-        return leader
+        res = res.filter(Boolean);
+        return res.reverse();
   }
-  return { calculateRiding, calculateJogging, showProgress, showLeader };
+  const runningActivities = (activities)=>{
+    let res = activities.map(activitie=>{
+      if(activitie.workout_type === 0){
+        return{
+          distance: activitie.distance,
+          date: new Date(activitie.start_date)
+        }
+      }
+    })
+    res = res.filter(Boolean);
+    return res.reverse();
+  }
+  return {
+    calculateRiding,
+    calculateJogging,
+    showProgress,
+    showLeader,
+    challengeActivities,
+    ridingActivities,
+    runningActivities
+  };
 }

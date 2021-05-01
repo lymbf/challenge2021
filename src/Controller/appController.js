@@ -36,6 +36,7 @@ export default function useAppController() {
           jogging: jogging,
           riding: riding,
           progress: progress,
+          activities: relevant_activities
         };
       });
       setLeader(showLeader(relevant));
@@ -43,5 +44,10 @@ export default function useAppController() {
       setRelevant_users(relevant);
     }
   }, [user_activities, error]);
-  return { user_stats: relevant_users, error: error, leader: leader, user_activities: user_activities };
+  return {
+    user_stats: relevant_users,
+    error: error,
+    leader: leader,
+    user_activities: user_activities,
+  };
 }
