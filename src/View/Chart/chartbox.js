@@ -3,6 +3,7 @@ import "./chartbox.css";
 
 import Enlarged from "./enlarged";
 import Chart from "../Assets/chart";
+import Shadow from "../Assets/shadow";
 import useChartController from "../../Controller/chartController";
 
 export default function Chartbox(props) {
@@ -12,7 +13,7 @@ export default function Chartbox(props) {
     props.activities,
     type
   );
-    console.log(chartData);
+  console.log(chartData);
   return (
     <div className="chartbox">
       <div>
@@ -39,15 +40,24 @@ export default function Chartbox(props) {
         </div>
       </div>
       <div>
-        <Chart 
-            chart = {{
-                data: chartData,
-                stepsize: stepsize,
-                max: max
-            }}
+        <Chart
+          chart={{
+            data: chartData,
+            stepsize: stepsize,
+            max: max,
+          }}
         />
       </div>
-      {enlarged && <Enlarged />}
+      {enlarged && (
+        <Enlarged
+          chart={{
+            data: chartData,
+            stepsize: stepsize,
+            max: max,
+          }}
+        />
+      )}
+      {enlarged && <Shadow setEnlarged={setEnlarged} />}
     </div>
   );
 }

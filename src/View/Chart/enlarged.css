@@ -1,0 +1,19 @@
+.enlarged{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+  
+    z-index: 10;
+    background-color: rgb(8, 36, 59);
+}
+.enlarged:hover{
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1000px){
+    .enlarged{
+        width: 100%;
+    }
+}
